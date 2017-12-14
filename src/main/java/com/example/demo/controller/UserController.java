@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.mapper.TCommAreaMapper;
+import com.example.demo.model.TCommArea;
+import com.example.demo.model.TCommAreaExample;
 import com.example.demo.service.UserService;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -22,5 +25,26 @@ public class UserController {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
+    public void aaa() {
+
+        TCommAreaExample example = new TCommAreaExample();
+        TCommAreaExample.Criteria criteria = example.createCriteria();
+        criteria.andLevelTypeEqualTo(3);
+        //执行查询
+        List<TCommArea> commAreaList = userService.selectByExample(example);
+
+        for (TCommArea tCommArea : commAreaList) {
+
+            TCommArea parent = userService.selectByPrimaryKey(Long.valueOf(tCommArea.getParentId()));
+            String sb = "100000," + parent.getParentId() +
+                    "," +
+                    tCommArea.getParentId() + "," +
+                    tCommArea.getId();
+            tCommArea.setPath(sb);
+            userService.updateByPrimaryKey(tCommArea);
+        }
     }
 }
