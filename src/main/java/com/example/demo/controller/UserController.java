@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.mapper.TCommAreaMapper;
 import com.example.demo.model.TCommArea;
 import com.example.demo.model.TCommAreaExample;
-import com.example.demo.service.UserService;
 import com.example.demo.model.User;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
