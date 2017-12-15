@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.mapper.TCommAreaMapper;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.ColumnInfo;
 import com.example.demo.model.TCommArea;
 import com.example.demo.model.TCommAreaExample;
 import com.example.demo.model.User;
@@ -31,5 +32,9 @@ public class UserService {
 
     public void updateByPrimaryKey(TCommArea tCommArea) {
         commAreaMapper.updateByPrimaryKey(tCommArea);
+    }
+
+    public List<ColumnInfo> getColumnInfoList() {
+        return userMapper.getColumnInfoList();
     }
 }

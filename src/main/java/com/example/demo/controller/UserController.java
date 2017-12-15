@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.BaseResponse;
 import com.example.demo.model.TCommArea;
 import com.example.demo.model.TCommAreaExample;
 import com.example.demo.model.User;
@@ -26,7 +27,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
+    @GetMapping("/aaa")
     public void aaa() {
 
         TCommAreaExample example = new TCommAreaExample();
@@ -45,5 +46,12 @@ public class UserController {
             tCommArea.setPath(sb);
             userService.updateByPrimaryKey(tCommArea);
         }
+    }
+
+    @GetMapping("/bbb")
+    public BaseResponse bbb() {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setData(userService.getColumnInfoList());
+        return baseResponse;
     }
 }
