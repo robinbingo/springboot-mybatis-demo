@@ -3,7 +3,7 @@ package com.example.demo.common;
 public enum ResCode {
 
 
-    SUCCESS("1000", "成功.");
+    SUCCESS("1000", "成功");
 
     /******************************fields******************************/
 
